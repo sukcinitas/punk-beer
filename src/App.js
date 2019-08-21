@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SearchBar from './components/SearchBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      beers: []
+    }
+  }
+
+  componentDidMount() {
+      fetch('https://api.punkapi.com/v2/beers?page=1&per_page=5')
+        .then(response => response.json())
+        .then(res => {
+          console.log(res)
+          this.setState({
+            beers: Array.from(res)
+          })
+        });
+      
+  }
+  render() {
+    return (
+      <>
+        <SearchBar />
+        {this.state.beers.map((beer)=> {
+          return (<>
+            <h1>{beer.name}</h1>
+            <p>{beer.description}</p>
+                  </>)
+        })}
+      </>
+    )
+  }
 }
 
 export default App;
