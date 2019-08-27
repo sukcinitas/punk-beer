@@ -5,8 +5,7 @@ function About () {
     return (
         <>
             <h1>About</h1>
-            <p>Paragrafas apie tai, kas yra sitas puslapis
-            </p>
+            <p>Paragrafas apie tai, kas yra sitas puslapis</p>
         </>
     )
 }
