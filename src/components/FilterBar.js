@@ -67,13 +67,13 @@ class FilterBar extends React.Component {
             filtersDisplay: "none",
             hover: false,
             hoveredFilter: "none",
-            url: ["https://api.punkapi.com/v2/beers?"],
+            //url: ["https://api.punkapi.com/v2/beers?"],
             beers: []
         }
         this.displayFilters = this.displayFilters.bind(this);
         this.toggleHover = this.toggleHover.bind(this);
-        this.updateUrl = this.updateUrl.bind(this);
-        this.handleFilter = this.handleFilter.bind(this);
+        // this.updateUrl = this.updateUrl.bind(this);
+        //this.handleFilter = this.handleFilter.bind(this);
     }
 
     displayFilters() {
@@ -89,28 +89,28 @@ class FilterBar extends React.Component {
         })        
     }
     
-    updateUrl(e) {
-        const index = (this.state.url).indexOf(e.target.dataset.url);
+    // updateUrl(e) {
+    //     const index = (this.state.url).indexOf(e.target.dataset.url);
 
-        if (index > -1) {
-            this.setState ({
-                url: [...(this.state.url).slice(0, index), ...(this.state.url).slice(index + 1)]
-            });
-            return;
-        }
-        this.setState ({
-            url: [...this.state.url, e.target.dataset.url]
-        })
-    }
-    handleFilter() {
-        fetch(this.state.url.join(""))
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            beers: Array.from(data)
-          })
-        });
-    }
+    //     if (index > -1) {
+    //         this.setState ({
+    //             url: [...(this.state.url).slice(0, index), ...(this.state.url).slice(index + 1)]
+    //         });
+    //         return;
+    //     }
+    //     this.setState ({
+    //         url: [...this.state.url, e.target.dataset.url]
+    //     })
+    // }
+    // handleFilter() {
+    //     fetch(this.state.url.join(""))
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.setState({
+    //         beers: Array.from(data)
+    //       })
+    //     });
+    // }
     render() {
         const beers = this.state.beers.map(beer => {return (
             <>
@@ -135,11 +135,11 @@ class FilterBar extends React.Component {
                     <button id="ebc" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>EBC</button>
                 </div>
 
-                <Filter styling={this.state.hoveredFilter === "abv" ? "block" : "none"} filter={abv} click={this.updateUrl}/>
-                <Filter styling={this.state.hoveredFilter === "ibu"? "block" : "none"} filter={ibu} click={this.updateUrl}/>
-                <Filter styling={this.state.hoveredFilter === "ebc"? "block" : "none"} filter={ebc} click={this.updateUrl}/>
+                <Filter styling={this.state.hoveredFilter === "abv" ? "block" : "none"} filter={abv} click={this.props.updateurl}/>
+                <Filter styling={this.state.hoveredFilter === "ibu"? "block" : "none"} filter={ibu} click={this.props.updateurl}/>
+                <Filter styling={this.state.hoveredFilter === "ebc"? "block" : "none"} filter={ebc} click={this.props.updateurl}/>
 
-                <button onClick={this.handleFilter}>Filter out</button>
+                <button onClick={this.props.filter}>Filter out</button>
                 
                 {/* When filter out is clicked, beers meeting the filtering criteria are fetched and displayed */}
                 <div>{beers}</div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import BeerCard from './BeerCard';
 
 
 const data = [
@@ -58,7 +60,7 @@ class SearchBar extends React.Component {
         this.state = {
             placeholder: data[0].placeholder,
             options: "",
-            beers: [],
+            searchbeers: [],
             input: ""
         }
         this.handleChange = this.handleChange.bind(this);
@@ -74,13 +76,12 @@ class SearchBar extends React.Component {
           .then(response => response.json())
           .then(data => {
             this.setState({
-              beers: Array.from(data)
+              searchbeers: Array.from(data)
             })
           });
     }
 
     handler(e) {
-        console.log(e.target)
         this.setState ({
             options: e.target.value,
             placeholder: e.target.dataset.placeholder
@@ -89,18 +90,19 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        const beers = this.state.beers.map(beer => {return <button>{beer.name}</button>});
+        const beers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}>{beer.name}</li>});
         const searchOptions = data.map(item => {
             return <SearchOption key={item.id} option={item} chosen={this.state.options} handler={this.handler}/>
         });
         return (
-            <>
+            <>  
+                
                 <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}}></input>
                 <form>
                     {searchOptions}
                 </form>
                 <p>{this.state.input}</p>
-                <p>{beers}</p>
+                <ul>{beers}</ul>
             </>              
 
         )

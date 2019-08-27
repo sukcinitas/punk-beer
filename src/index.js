@@ -6,6 +6,7 @@ import App from './App';
 import Beers from './Beers';
 import About from './About';
 import Random from './Random';
+import SearchBar from './components/SearchBar';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -13,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
     <Router>
       <div>
         <h1>Punk Beer</h1>
+        <SearchBar />
         <ul>
           <li>
             <Link to="/">Home</Link>
