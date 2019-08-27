@@ -3,7 +3,7 @@ import React from 'react';
 class BeerCard extends React.Component {
     render() {
         const beer = this.props.info.map((beer) => (
-        <>
+        <div>
             <h2>{beer.name}</h2>
             <small>{beer.tagline}</small>
             <img src={beer.image_url} height="300" style={{"display":"block"}}/>
@@ -15,7 +15,7 @@ class BeerCard extends React.Component {
                 {beer.food_pairing.map(food => <li>{food}</li>)}
             </ul>
             <p>Brewers Tips: {beer.brewers_tips}</p>
-        </>))
+        </div>))
         return (
             <>
                 {beer}
