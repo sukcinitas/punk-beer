@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import BeerCard from './components/BeerCard';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router, Switch, NavLink } from 'react-router-dom';
 
 class Beers extends React.Component {
     constructor() {
@@ -25,7 +25,6 @@ class Beers extends React.Component {
         fetch(`${this.state.url.join("&")}&page=${this.state.page}`)
           .then(response => response.json())
           .then(res => {
-            console.log(res)
             this.setState({
               beers: Array.from(res)
             })
@@ -49,7 +48,6 @@ class Beers extends React.Component {
         fetch(`https://api.punkapi.com/v2/beers/${this.state.id}`)
           .then(response => response.json())
           .then(res => {
-            console.log(res)
             this.setState({
               beer: res
             })
@@ -64,7 +62,6 @@ class Beers extends React.Component {
         fetch(`${this.state.url.join("&")}&page=${this.state.page}`)
           .then(response => response.json())
           .then(res => {
-            console.log(res)
             this.setState({
               beers: Array.from(res)
             })
@@ -101,17 +98,17 @@ class Beers extends React.Component {
   }
 // at first i used button but button cannot be inside link tag and vice versa
     render() {
+      console.log(this.props.match.params)
       const id = this.state.id;
       const beers = this.state.beers.map((beer)=> {
         return (<div>
                   <h1>{beer.name}</h1>
                   <small>{beer.tagline}</small>
                   <img src={beer.image_url} height="300" style={{"display":"block"}}/>
-                  <Link to={`/beers/${beer.id}`}><p data-id={beer.id} onClick={this.handleClick}>Read more</p></Link>
+                  <NavLink to={`/beers/${beer.id}`}><p data-id={beer.id} onClick={this.handleClick} >Read more</p></NavLink>
                   <hr></hr>
                 </div>)
       });
-      console.log(this.state.beers)
       return (
         <>          
             <Switch>

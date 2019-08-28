@@ -1,6 +1,9 @@
 import React from 'react';
 
 class BeerCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         const beer = this.props.info.map((beer) => (
         <div>

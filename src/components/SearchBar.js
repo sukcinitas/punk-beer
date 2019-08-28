@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import BeerCard from './BeerCard';
+import './SearchBar.css';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 
 const data = [
@@ -61,10 +61,13 @@ class SearchBar extends React.Component {
             placeholder: data[0].placeholder,
             options: "",
             searchbeers: [],
-            input: ""
+            input: "",
+
         }
         this.handleChange = this.handleChange.bind(this);
         this.handler = this.handler.bind(this);
+        this.blur = this.blur.bind(this);
+        this.focus = this.focus.bind(this);
     }
 
     handleChange (e) {
@@ -88,21 +91,28 @@ class SearchBar extends React.Component {
           })
         console.log(this.state.options)
     }
-
+    blur() {
+        document.querySelector("#list").classList.remove('active');
+        document.querySelector("#list").classList.add('inactive');
+    }
+    focus(){
+        document.querySelector("#list").classList.remove('inactive');
+        document.querySelector("#list").classList.add('active');
+    }
     render() {
+        console.log(document.activeElement);
         const beers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}>{beer.name}</li>});
         const searchOptions = data.map(item => {
             return <SearchOption key={item.id} option={item} chosen={this.state.options} handler={this.handler}/>
         });
         return (
             <>  
-                
-                <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}}></input>
+                <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}} name="inputField" onBlur={this.blur} onFocus={this.focus}></input>
                 <form>
                     {searchOptions}
                 </form>
                 <p>{this.state.input}</p>
-                <ul>{beers}</ul>
+                <ul id="list" className="active">{beers}</ul>
             </>              
 
         )
