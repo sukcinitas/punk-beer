@@ -49,7 +49,7 @@ class Filter extends React.Component {
     render() {
         const allKeys = Object.keys(this.props.filter.values);
         const allBtns = allKeys.map(keyName => {
-            return <button onClick={this.props.click} data-url={this.props.filter.values[keyName]} className="btn">{keyName} {this.props.filter.units}</button>
+            return <button key={keyName} onClick={this.props.click} data-url={this.props.filter.values[keyName]} className="btn">{keyName} {this.props.filter.units}</button>
         })
         return (
             <div id={this.props.filter.units} style={{"display": `${this.props.styling}`}}> 
@@ -72,8 +72,7 @@ class FilterBar extends React.Component {
         }
         this.displayFilters = this.displayFilters.bind(this);
         this.toggleHover = this.toggleHover.bind(this);
-        // this.updateUrl = this.updateUrl.bind(this);
-        //this.handleFilter = this.handleFilter.bind(this);
+        
     }
 
     displayFilters() {
@@ -89,28 +88,7 @@ class FilterBar extends React.Component {
         })        
     }
     
-    // updateUrl(e) {
-    //     const index = (this.state.url).indexOf(e.target.dataset.url);
-
-    //     if (index > -1) {
-    //         this.setState ({
-    //             url: [...(this.state.url).slice(0, index), ...(this.state.url).slice(index + 1)]
-    //         });
-    //         return;
-    //     }
-    //     this.setState ({
-    //         url: [...this.state.url, e.target.dataset.url]
-    //     })
-    // }
-    // handleFilter() {
-    //     fetch(this.state.url.join(""))
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.setState({
-    //         beers: Array.from(data)
-    //       })
-    //     });
-    // }
+    
     render() {
         const beers = this.state.beers.map(beer => {return (
             <>

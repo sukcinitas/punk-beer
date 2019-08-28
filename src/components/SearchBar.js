@@ -1,6 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 
 const data = [
@@ -67,7 +68,7 @@ class SearchBar extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handler = this.handler.bind(this);
         this.blur = this.blur.bind(this);
-        this.focus = this.focus.bind(this);
+        // this.focus = this.focus.bind(this);
     }
 
     handleChange (e) {
@@ -89,30 +90,32 @@ class SearchBar extends React.Component {
             options: e.target.value,
             placeholder: e.target.dataset.placeholder
           })
-        console.log(this.state.options)
     }
     blur() {
-        document.querySelector("#list").classList.remove('active');
-        document.querySelector("#list").classList.add('inactive');
+        //list.innerHTML = "";
     }
-    focus(){
-        document.querySelector("#list").classList.remove('inactive');
-        document.querySelector("#list").classList.add('active');
-    }
+    // focus(){
+    //     document.querySelector("#list").classList.remove('inactive');
+    //     document.querySelector("#lit").classList.add('active');
+    // }
     render() {
-        console.log(document.activeElement);
-        const beers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}>{beer.name}</li>});
+        const searchbeers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}><Link to={`/beers/${beer.id}`}>{beer.name}</Link></li>});
+        console.log(searchbeers);
         const searchOptions = data.map(item => {
             return <SearchOption key={item.id} option={item} chosen={this.state.options} handler={this.handler}/>
         });
         return (
             <>  
-                <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}} name="inputField" onBlur={this.blur} onFocus={this.focus}></input>
+                <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}} name="inputField" onBlur={this.blur}></input>
                 <form>
                     {searchOptions}
                 </form>
                 <p>{this.state.input}</p>
-                <ul id="list" className="active">{beers}</ul>
+
+                <ul id="list">
+                        {searchbeers}
+                </ul>
+
             </>              
 
         )

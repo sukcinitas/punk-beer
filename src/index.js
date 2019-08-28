@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Beers from './Beers';
 import About from './About';
-import Random from './Random';
+import BeerCard from './components/BeerCard';
 import SearchBar from './components/SearchBar';
 import * as serviceWorker from './serviceWorker';
 
@@ -26,13 +26,16 @@ import * as serviceWorker from './serviceWorker';
             <Link to="/beers">Beers</Link>
           </li>
           <li>
-            <Link to="/random">Random Beer</Link>
+            <Link to="/beers/random">Random Beer</Link>
           </li>
         </ul>
-        <Route exact path="/" component={App} />
-        <Route path="/beers" component={Beers} />
-        <Route path="/about" component={About} />
-        <Route path="/random" component={Random} />
+        <Switch>
+          <Route path="/beers/:id" render={({match})=> <BeerCard match={match} />} />
+          <Route path="/beers/:id" component={BeerCard} />
+          <Route exact path="/" component={App} />
+          <Route path="/beers" component={Beers} />
+          <Route path="/about" component={About} />
+        </Switch>
       </div>
     </Router>
   )

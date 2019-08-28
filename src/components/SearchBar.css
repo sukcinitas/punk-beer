@@ -1,9 +1,0 @@
-input:focus {
-    background-color: rgb(64, 134, 102);
-}
-.inactive {
-    display: none;
-}
-.active {
-    display: block;
-}
