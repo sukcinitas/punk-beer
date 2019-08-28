@@ -30,7 +30,7 @@ import * as serviceWorker from './serviceWorker';
           </li>
         </ul>
         <Switch>
-          <Route path="/beers/:id" render={({match})=> <BeerCard match={match} />} />
+          <Route path="/beers/:id" render={({match})=> <BeerCard match={match}/>} />
           <Route path="/beers/:id" component={BeerCard} />
           <Route exact path="/" component={App} />
           <Route path="/beers" component={Beers} />

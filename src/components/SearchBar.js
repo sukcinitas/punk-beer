@@ -47,7 +47,7 @@ const data = [
 class SearchOption extends React.Component {
     render() {
         return (
-            <div style={{"display": "inline"}}>
+            <div class="search-option" style={{"display": "inline"}}>
                 <input type="radio" id={this.props.option.id} key={this.props.option.id} name="search-param" value={this.props.option.value} data-placeholder={this.props.option.placeholder} checked={this.props.chosen === this.props.option.value} onChange={this.props.handler}/>
                 <label htmlFor={this.props.option.id}>{this.props.option.name}</label>
             </div> 
@@ -105,18 +105,16 @@ class SearchBar extends React.Component {
             return <SearchOption key={item.id} option={item} chosen={this.state.options} handler={this.handler}/>
         });
         return (
-            <>  
+            <div id="searchbar">  
                 <input placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} style={{"width": "100%"}} name="inputField" onBlur={this.blur}></input>
                 <form>
                     {searchOptions}
                 </form>
-                <p>{this.state.input}</p>
-
                 <ul id="list">
                         {searchbeers}
                 </ul>
 
-            </>              
+            </div>              
 
         )
     }

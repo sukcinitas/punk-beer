@@ -6,14 +6,14 @@ class BeerCard extends React.Component {
         super(props);
         this.state = {
             beer: [],
+            id: this.props.match.params.id
 
         }
     }
-
+    
     componentDidMount() {
-        const id = this.props.match.params.id;
 
-        fetch(`https://api.punkapi.com/v2/beers/${id}`)
+        fetch(`https://api.punkapi.com/v2/beers/${this.state.id}`)
           .then(response => response.json())
           .then(res => {
             this.setState({
@@ -21,8 +21,27 @@ class BeerCard extends React.Component {
             })
           });
     }
+    
+    componentDidUpdate(prevProps, prevState) {
+        // only update chart if the data has changed
+        console.log(prevProps.match.params.id !== this.props.match.params.id)
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.setState({
+                id: this.props.match.params.id
+            },    () => {
+                fetch(`https://api.punkapi.com/v2/beers/${this.state.id}`)
+                    .then(response => response.json())
+                    .then(res => {
+                        this.setState({
+                        beer: Array.from(res)
+                        })
+                });
+                }
+            )
+        }
+      }
     render() {
-       console.log( this.props.match.params.id);
+       console.log( this.state.id);
         const beer = this.state.beer.map((beer, index) => 
         <div key={beer.name}>
             <h2>{beer.name}</h2>
