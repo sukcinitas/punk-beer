@@ -6,11 +6,13 @@ import { Route, Link} from 'react-router-dom';
 class App extends React.Component {
   render() {
     return (
-      
-      <div class="main explore">
-        <Link id="explore-btn" to="/beers">Explore</Link>
-        <Route path="/beers" component={Beers} />
-      </div>
+      <>
+        <h1 id="other">Punk Beer</h1>
+        <div className="main explore">
+          <Link id="explore-btn" to="/beers">Explore</Link>
+          <Route path="/beers" component={Beers} />
+        </div>
+      </>
     )
   }
 }

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Reenie+Beanie|Rye&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -38,12 +39,13 @@ h1#header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: head;
-  color: red;
-  padding: 10px;
+  color: #1b1a12;
+  padding: 30px;
   line-height: 0.5;
   margin: 0;
-  -webkit-filter: drop-shadow(1px 1px 5px red);
-          filter: drop-shadow(1px 1px 5px red);
+  font-family: "Rye", cursive;
+  font-size: 20px;
+  position: fixed;
 }
 
 /*========SearchBar========
@@ -56,19 +58,23 @@ div#searchbar {
   -ms-grid-column-align: center;
       justify-self: center;
   width: 90%;
+  color: #120899;
 }
 
 div#searchbar input#search-box {
   margin: 0 auto;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #120899;
   padding: 5px;
-  font-size: 12px;
+  font-size: 14px;
+  color: #120899;
   width: 80%;
   -webkit-transition: width 1.2s;
   transition: width 1.2s;
   text-align: center;
+  text-transform: lowercase;
+  font-family: "PT Sans", sans-serif;
 }
 
 div#searchbar input#search-box:hover, div#searchbar input#search-box :focus {
@@ -78,8 +84,12 @@ div#searchbar input#search-box:hover, div#searchbar input#search-box :focus {
 div#searchbar div.search-option {
   font-size: 12px;
   display: inline;
+  text-transform: lowercase;
+  font-family: "PT Sans", sans-serif;
 }
 
+/*=======Navigation=======
+    ============================*/
 ul#navigation {
   position: fixed;
   right: 0;
@@ -93,17 +103,23 @@ ul#navigation li {
           writing-mode: vertical-rl;
   text-orientation: mixed;
   padding: 10px 10px;
+  -webkit-box-shadow: inset -7px 0px darkred;
+          box-shadow: inset -7px 0px darkred;
 }
 
 ul#navigation li a {
   text-decoration: none;
-  color: #02023d;
-  font-size: 16px;
-  text-transform: uppercase;
+  color: rgba(109, 214, 233, 0.952);
+  font-size: 18px;
+  text-transform: lowercase;
+  font-family: "PT Sans", sans-serif;
+  border-left: 0px solid #080899;
 }
 
 ul#navigation li a:hover, ul#navigation li a :focus {
-  font-size: 20px;
+  border-left: 1px solid #120899;
+  -webkit-transition: border 4s ease;
+  transition: border 4s ease;
 }
 
 .main {
@@ -138,47 +154,39 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 
 #beers-main #beers .beers-beer-card {
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   max-width: 100%;
 }
 
 #beers-main #beers .beers-beer-card img {
+  border-radius: 10px;
   height: 400px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 30px;
 }
 
-#beers-main #beers .beers-beer-card #text {
-  position: relative;
-  width: 400px;
+#beers-main #beers .beers-beer-card a {
+  color: yellow;
+  background-color: rgba(56, 15, 168, 0.6);
 }
 
 #beers-main #beers .beers-beer-card #text h1 {
-  position: absolute;
-  top: 80px;
-  left: -150px;
-  color: red;
+  color: rgba(109, 214, 233, 0.952);
+  -webkit-filter: drop-shadow(1px 1px 7px blue);
+          filter: drop-shadow(1px 1px 7px blue);
+  text-transform: uppercase;
   font-size: 40px;
+  font-family: "Unica One", cursive;
+  margin: 0;
   width: 100%;
 }
 
 #beers-main #beers .beers-beer-card #text h1:after {
-  position: absolute;
   content: attr(data-line);
-  font-size: 18px;
-  top: 80px;
-  left: 50px;
-}
-
-#beers-main #beers .beers-beer-card #text h4 {
-  margin-top: 150px;
-  font-size: 18px;
+  margin: 0;
+  font-size: 17px;
+  color: #02023d;
+  padding: 10px;
+  font-family: "Unica One", cursive;
 }
 
 /* ======= Beer Card =======
@@ -229,6 +237,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   -ms-grid-column-align: center;
       justify-self: center;
   height: 300px;
+  border: 2px solid blue;
 }
 
 .beer-card div#beer-card-main {
@@ -250,9 +259,21 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 
 #explore-btn {
   border: 1px solid gray;
-  font-size: 40px;
+  font-size: 30px;
+  padding: 5px;
   max-width: 50%;
   text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "PT Sans", sans-serif;
+  display: block;
+  margin: 0 auto;
+  margin-top: 300px;
+  background: #9386b8;
+  -webkit-box-shadow: 10px 10px 1px blue;
+          box-shadow: 10px 10px 1px blue;
+  color: white;
+  border: 1px solid blue;
 }
 
 /*=======Making text as background=======*/
@@ -266,8 +287,25 @@ h1#bg {
   font-size: 600px;
   text-align: center;
   line-height: 0.6;
-  color: red;
-  background-color: #ff1e00;
+  color: #851212;
+  background-color: #721313;
+  margin: 0;
+  padding: 0;
+  z-index: -100;
+}
+
+h1#other {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  font-size: 550px;
+  text-align: center;
+  line-height: 0.6;
+  color: rgba(57, 57, 119, 0.6);
+  background-color: transparent;
   margin: 0;
   padding: 0;
   z-index: -100;
@@ -291,5 +329,13 @@ h1#bg {
   text-align: center;
   padding: 40px;
   margin: 0 200px;
+}
+
+button {
+  background-color: rgba(109, 214, 233, 0.952);
+  color: #02023d;
+  border: 2px solid #02023d;
+  border-radius: 3px;
+  padding: 10px;
 }
 /*# sourceMappingURL=index.css.map */

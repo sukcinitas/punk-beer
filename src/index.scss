@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie|Rye&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -32,11 +32,13 @@ body {
 
     h1#header {
         grid-area: head;
-        color: red;
-        padding: 10px;
+        color: rgba(27, 26, 18, 1);
+        padding: 30px;
         line-height: 0.5;
         margin: 0;
-        filter: drop-shadow(1px 1px 5px red);
+        font-family: "Rye", cursive;
+        font-size: 20px;
+        position: fixed;
     }
     /*========SearchBar========
     =============================*/
@@ -45,17 +47,22 @@ body {
         text-align:center;
         justify-self: center;
         width: 90%;
+        color: rgb(18,8,153);
+
         
         input#search-box{
             margin: 0 auto;
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(18,8,153);;
             padding: 5px;
-            font-size: 12px;
+            font-size: 14px;
+            color: rgb(18,8,153);
             width: 80%;
             transition: width 1.2s;
             text-align: center;
+            text-transform: lowercase;
+            font-family: "PT Sans", sans-serif;
             
             &:hover, :focus {
                 width: 100%;
@@ -64,8 +71,12 @@ body {
         div.search-option{
             font-size:12px;
             display: inline;
+            text-transform: lowercase;
+            font-family: "PT Sans", sans-serif;
         }
     }
+    /*=======Navigation=======
+    ============================*/
     ul#navigation {
         position: fixed;
         right: 0;
@@ -76,14 +87,18 @@ body {
             writing-mode: vertical-rl;
             text-orientation: mixed;
             padding: 10px 10px;
+            box-shadow:inset -7px 0px darkred;
                 a {
                 text-decoration: none;
-                color: rgb(2, 2, 61);
-                font-size: 16px;
-                text-transform: uppercase;
-                
+                color: rgba(109, 214, 233, 0.952);
+                font-size: 18px;
+                text-transform: lowercase;
+                font-family: "PT Sans", sans-serif;
+                border-left: 0px solid rgb(8,8,153);
+
                     &:hover,:focus {
-                        font-size: 20px;
+                        border-left: 1px solid rgb(18, 8, 153);
+                        transition: border 4s ease;
                     }
                 }
         }
@@ -109,36 +124,37 @@ body {
         grid-gap: 80px;
         .beers-beer-card {
             text-align: center;
-            display: flex;
-            flex-direction: row;
             max-width: 100%;
             img {
+                // background-color: rgba(56, 15, 168, 0.6);
+                // border: 3px solid blue;
+                border-radius: 10px;
                 height: 400px;
-                margin:0 auto;
-                padding: 10px;
+                margin: 0 auto;
+                padding: 30px;
+            }
+            a {
+                color: yellow;
+                background-color: rgba(56, 15, 168, 0.6);
             }
             #text {
-                position: relative;
-                width: 400px;
-               h1 {
-                    position: absolute;
-                    top: 80px;
-                    left: -150px;
-                    color: red;
+               h1 { 
+                    color: rgba(109, 214, 233, 0.952);
+                    filter: drop-shadow(1px 1px 7px blue); 
+                    text-transform: uppercase;
                     font-size: 40px;
+                    font-family: "Unica One", cursive;
+                    margin: 0;
                     width: 100%;
                     &:after {
-                        position: absolute;
                         content: attr(data-line);
-                        font-size: 18px;
-                        top: 80px;
-                        left: 50px;
+                        margin: 0;
+                        font-size: 17px;
+                        color: rgb(2, 2, 61);
+                        padding: 10px;
+                        font-family: "Unica One", cursive;
                     }
                 } 
-                h4 {
-                    margin-top: 150px;
-                    font-size: 18px;
-                }
             }
             
         }
@@ -182,6 +198,7 @@ body {
         grid-area: img;
         justify-self: center;
         height: 300px;
+        border:2px solid blue;
     }
     div#beer-card-main {
         grid-area: main;
@@ -203,9 +220,20 @@ body {
 
     #explore-btn {
         border: 1px solid gray;
-        font-size: 40px;
+        font-size: 30px;
+        padding: 5px;
         max-width: 50%;
         text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: "PT Sans", sans-serif;
+        display: block;
+        margin: 0 auto;
+        margin-top: 300px;
+        background: rgb(147, 134, 184);
+        box-shadow: 10px 10px 1px blue;
+        color: white;
+        border: 1px solid blue;
     }
 
 /*=======Making text as background=======*/
@@ -219,8 +247,24 @@ h1#bg {
     font-size: 600px;
     text-align: center;
     line-height: 0.6;
-    color: red;
-    background-color: rgb(255, 30,0);
+    color: rgb(133, 18, 18);
+    background-color: rgb(114, 19, 19);
+    margin: 0;
+    padding: 0;
+    z-index:-100;
+}
+h1#other {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    font-size: 550px;
+    text-align: center;
+    line-height: 0.6;
+    color: rgba(57, 57, 119, 0.6);
+    background-color: transparent;
     margin: 0;
     padding: 0;
     z-index:-100;
@@ -244,4 +288,12 @@ h1#bg {
         padding: 40px;
         margin: 0 200px;
     }
+}
+
+button {
+    background-color: rgba(109, 214, 233, 0.952);
+    color: rgba(2,2,61,1);
+    border: 2px solid rgba(2,2,61,1);
+    border-radius: 3px;
+    padding: 10px;
 }
