@@ -54,16 +54,16 @@ class BeerCard extends React.Component {
                         <small>{beer.ibu} IBU</small>
                         <small>{beer.ebc} EBC</small>
                     </div>
-                    <p>{beer.description}</p>
+                    <p id="description">{beer.description}</p>
                     <ul>Food pairing:
                         {beer.food_pairing.map(food => <li>{food}</li>)}
                     </ul>
-                    <p>Brewers Tips: {beer.brewers_tips}</p>
+                    <p id="brewers-tips">Brewers Tips: <br></br>{beer.brewers_tips}</p>
                 </div>
             </div>)
         })
         return (
-            <div class="main">
+            <div className="main">
                 {beer}
             </div>
         )
