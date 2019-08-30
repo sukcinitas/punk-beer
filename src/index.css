@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  overflow: auto;
+  background-position: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*========Shared across: header, searchbar, navigation=========
+================================================================*/
+#main {
+  height: 100vh;
+  overflow: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 1fr;
+      grid-template-columns: 4fr 1fr;
+  -ms-grid-rows: 1fr 5fr;
+      grid-template-rows: 1fr 5fr;
+      grid-template-areas: "head search"  "main main";
+}
+
+h1#header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: head;
+  color: red;
+  padding: 10px;
+  line-height: 0.5;
+  margin: 0;
+  -webkit-filter: drop-shadow(1px 1px 5px red);
+          filter: drop-shadow(1px 1px 5px red);
+}
+
+/*========SearchBar========
+    =============================*/
+div#searchbar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: search;
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 90%;
+}
+
+div#searchbar input#search-box {
+  margin: 0 auto;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  font-size: 12px;
+  width: 80%;
+  -webkit-transition: width 1.2s;
+  transition: width 1.2s;
+  text-align: center;
+}
+
+div#searchbar input#search-box:hover, div#searchbar input#search-box :focus {
+  width: 100%;
+}
+
+div#searchbar div.search-option {
+  font-size: 12px;
+  display: inline;
+}
+
+ul#navigation {
+  position: fixed;
+  right: 0;
+  top: calc(50% - 151px);
+}
+
+ul#navigation li {
+  list-style: none;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 10px 10px;
+}
+
+ul#navigation li a {
+  text-decoration: none;
+  color: red;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+ul#navigation li a:hover, ul#navigation li a :focus {
+  font-size: 20px;
+}
+
+.main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+}
+
+#beers-main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+  max-width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#beers-main #beers {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  max-width: 100%;
+  grid-gap: 80px;
+}
+
+#beers-main #beers .beers-beer-card {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-width: 100%;
+}
+
+#beers-main #beers .beers-beer-card img {
+  height: 400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#beers-main #beers .beers-beer-card #text {
+  position: relative;
+  width: 400px;
+}
+
+#beers-main #beers .beers-beer-card #text h1 {
+  position: absolute;
+  top: 80px;
+  left: -150px;
+  color: red;
+  font-size: 40px;
+  width: 100%;
+}
+
+#beers-main #beers .beers-beer-card #text h1:after {
+  position: absolute;
+  content: attr(data-line);
+  font-size: 18px;
+  top: 80px;
+  left: 50px;
+}
+
+#beers-main #beers .beers-beer-card #text h4 {
+  margin-top: 150px;
+  font-size: 18px;
+}
+
+/* ======= Beer Card =======
+===============================*/
+.beer-card {
+  margin: 0 auto;
+  max-width: 80%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+  -ms-grid-rows: 1fr 3fr;
+      grid-template-rows: 1fr 3fr;
+      grid-template-areas: "header header" "img main";
+  color: #aee3f0;
+}
+
+.beer-card div#beer-card-header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+  text-align: center;
+}
+
+.beer-card div#beer-card-header h2 {
+  color: rgba(109, 214, 233, 0.952);
+  -webkit-filter: drop-shadow(1px 1px 5px blue);
+          filter: drop-shadow(1px 1px 5px blue);
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Unica One", sans-serif;
+}
+
+.beer-card img {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: img;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.beer-card div#beer-card-main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+  padding: 10px 50px;
+}
+
+#explore-btn {
+  border: 1px solid gray;
+  font-size: 40px;
+  max-width: 50%;
+  text-align: center;
+}
+
+/*=======Making text as background=======*/
+h1#bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  font-size: 600px;
+  text-align: center;
+  line-height: 0.6;
+  color: red;
+  background-color: #ff1e00;
+  margin: 0;
+  padding: 0;
+  z-index: -100;
+}
+/*# sourceMappingURL=index.css.map */

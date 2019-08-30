@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#root {
+    height: 100vh;
+    overflow: auto;
+    background-position: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/*========Shared across: header, searchbar, navigation=========
+================================================================*/
+#main {
+    height: 100vh;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas: "head search" 
+                         "main main";
+
+    }
+
+    h1#header {
+        grid-area: head;
+        color: red;
+        padding: 10px;
+        line-height: 0.5;
+        margin: 0;
+        filter: drop-shadow(1px 1px 5px red);
+    }
+    /*========SearchBar========
+    =============================*/
+    div#searchbar {
+        grid-area: search;
+        text-align:center;
+        justify-self: center;
+        width: 90%;
+        
+        input#search-box{
+            margin: 0 auto;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 5px;
+            font-size: 12px;
+            width: 80%;
+            transition: width 1.2s;
+            text-align: center;
+            
+            &:hover, :focus {
+                width: 100%;
+            }
+        }
+        div.search-option{
+            font-size:12px;
+            display: inline;
+        }
+    }
+    ul#navigation {
+        position: fixed;
+        right: 0;
+        top: calc(50% - 151px); //nav is at center, minus half height
+        
+        li {
+            list-style: none;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            padding: 10px 10px;
+                a {
+                text-decoration: none;
+                color: red;
+                font-size: 16px;
+                text-transform: uppercase;
+                
+                    &:hover,:focus {
+                        font-size: 20px;
+                    }
+                }
+        }
+    }
+    .main {
+        grid-area: main;
+    }
+
+
+
+
+
+#beers-main{
+    grid-area: main;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    #beers {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+        grid-gap: 80px;
+        .beers-beer-card {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            max-width: 100%;
+            img {
+                height: 400px;
+                margin:0 auto;
+                padding: 10px;
+            }
+            #text {
+                position: relative;
+                width: 400px;
+               h1 {
+                    position: absolute;
+                    top: 80px;
+                    left: -150px;
+                    color: red;
+                    font-size: 40px;
+                    width: 100%;
+                    &:after {
+                        position: absolute;
+                        content: attr(data-line);
+                        font-size: 18px;
+                        top: 80px;
+                        left: 50px;
+                    }
+                } 
+                h4 {
+                    margin-top: 150px;
+                    font-size: 18px;
+                }
+            }
+            
+        }
+    }
+}
+
+/* ======= Beer Card =======
+===============================*/
+.beer-card {
+    margin: 0 auto;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas: "header header" "img main";
+    color: rgb(174, 227, 240);
+
+    div#beer-card-header {
+        grid-area: header;
+        text-align: center;
+        h2 {
+            color: rgba(109, 214, 233, 0.952);
+            filter: drop-shadow(1px 1px 5px blue); 
+            text-transform: uppercase;
+            font-size: 40px;
+            font-family: "Unica One", sans-serif;
+        }
+        
+    }
+    img {
+        grid-area: img;
+        justify-self: center;
+    }
+    div#beer-card-main {
+        grid-area: main;
+        padding: 10px 50px;
+    }
+}
+
+    #explore-btn {
+        border: 1px solid gray;
+        font-size: 40px;
+        max-width: 50%;
+        text-align: center;
+    }
+
+/*=======Making text as background=======*/
+h1#bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    font-size: 600px;
+    text-align: center;
+    line-height: 0.6;
+    color: red;
+    background-color: rgb(255, 30,0);
+    margin: 0;
+    padding: 0;
+    z-index:-100;
+}

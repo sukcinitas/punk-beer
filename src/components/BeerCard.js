@@ -12,7 +12,6 @@ class BeerCard extends React.Component {
     }
     
     componentDidMount() {
-
         fetch(`https://api.punkapi.com/v2/beers/${this.state.id}`)
           .then(response => response.json())
           .then(res => {
@@ -28,38 +27,45 @@ class BeerCard extends React.Component {
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.setState({
                 id: this.props.match.params.id
-            },    () => {
+            },  () => {
                 fetch(`https://api.punkapi.com/v2/beers/${this.state.id}`)
                     .then(response => response.json())
                     .then(res => {
                         this.setState({
                         beer: Array.from(res)
                         })
-                });
-                }
-            )
+                    });
+            }
+        )
         }
-      }
+    }
+
     render() {
-       console.log( this.state.id);
-        const beer = this.state.beer.map((beer, index) => 
-        <div key={beer.name}>
-            <h2>{beer.name}</h2>
-            <small>{beer.tagline}</small>
-            <img src={beer.image_url} height="300" alt={beer.name} style={{"display":"block"}}/>
-            <p>{beer.description}</p>
-            <small>{beer.abv} ABV</small>
-            <small>{beer.ibu} IBU</small>
-            <small>{beer.ebc} EBC</small>
-            <ul>Pair with:
-                {beer.food_pairing.forEach(food => <li>{food}</li>)}
-            </ul>
-            <p>Brewers Tips: {beer.brewers_tips}</p>
-        </div>)
+        const beer = this.state.beer.map((beer, index) => {
+            return (<div className="beer-card" key={beer.name}>
+                <div id="beer-card-header">
+                    <h2>{beer.name}</h2>
+                    <h4>{beer.tagline}</h4>
+                </div>
+                <img src={beer.image_url || "beer.png"} alt={beer.name} height="300px" style={{"display":"block"}}/>
+                <div id="beer-card-main">
+                    <div id="beer-card-props">
+                        <small>{beer.abv} ABV</small>
+                        <small>{beer.ibu} IBU</small>
+                        <small>{beer.ebc} EBC</small>
+                    </div>
+                    <p>{beer.description}</p>
+                    <ul>Food pairing:
+                        {beer.food_pairing.map(food => <li>{food}</li>)}
+                    </ul>
+                    <p>Brewers Tips: {beer.brewers_tips}</p>
+                </div>
+            </div>)
+        })
         return (
-            <>
+            <div class="main">
                 {beer}
-            </>
+            </div>
         )
     }
 }

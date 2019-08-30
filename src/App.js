@@ -6,10 +6,11 @@ import { Route, Link} from 'react-router-dom';
 class App extends React.Component {
   render() {
     return (
-      <>
-        <Link to="/beers">EXPLORE</Link>
+      
+      <div class="main explore">
+        <Link id="explore-btn" to="/beers">Explore</Link>
         <Route path="/beers" component={Beers} />
-      </>
+      </div>
     )
   }
 }

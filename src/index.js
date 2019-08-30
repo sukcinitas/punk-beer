@@ -12,10 +12,11 @@ import * as serviceWorker from './serviceWorker';
 
   const routing = (
     <Router>
-      <div>
-        <h1>Punk Beer</h1>
+      <div id="main">
+        <h1 id="bg">Punk Beer</h1>
+        <h1 id="header">Punk Beer</h1>
         <SearchBar />
-        <ul>
+        <ul id="navigation">
           <li>
             <Link to="/">Home</Link>
           </li>   
@@ -26,12 +27,11 @@ import * as serviceWorker from './serviceWorker';
             <Link to="/beers">Beers</Link>
           </li>
           <li>
-            <Link to="/beers/random">Random Beer</Link>
+            <Link to="/beers/random">Random</Link>
           </li>
         </ul>
         <Switch>
           <Route path="/beers/:id" render={({match})=> <BeerCard match={match}/>} />
-          <Route path="/beers/:id" component={BeerCard} />
           <Route exact path="/" component={App} />
           <Route path="/beers" component={Beers} />
           <Route path="/about" component={About} />

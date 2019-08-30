@@ -82,28 +82,24 @@ class Beers extends React.Component {
 // at first i used button but button cannot be inside link tag and vice versa
     render() {
       const beers = this.state.beers.map((beer)=> {
-        return (<div key={beer.id}>
-                  <h1>{beer.name}</h1>
-                  <small>{beer.tagline}</small>
+        return (<div key={beer.id} className="beers-beer-card">
                   <img src={beer.image_url} height="300" alt={beer.name} style={{"display":"block"}}/>
-                  <NavLink to={`/beers/${beer.id}`}><p data-id={beer.id} >Read more</p></NavLink>
-                  <hr></hr>
+                  <div id="text">
+                    <h1 data-line={beer.tagline}>{beer.name}</h1>
+                    {/* <h4>{beer.tagline}</h4> */}
+                  </div>
+                  <NavLink to={`/beers/${beer.id}`}><p data-id={beer.id}>Read more</p></NavLink>
                 </div>)
       });
       return (
-        <>          
-            {/* <Switch>
-            <Route path="/beers/:id" component={BeerCard}></Route>
-            <Route path="/beers"> */}
+        <div id="beers-main">          
               <FilterBar filter={this.handleFilter} updateurl={this.updateUrl}/>
-              {beers.length === 0 ? "Nothing to show" : beers}
+              {beers.length === 0 ? "Nothing to show" : <div id="beers">{beers}</div>}
               <button onClick={this.handlePreviousPage} style={(this.state.page === 1 ? {display: "none"} : {display:"initial"})}>Back</button>
               {this.state.page}
               {`${this.state.url.join("&")}&page=${this.state.page}`}
               <button onClick={this.handleNextPage} style={beers.length === 0 ? {display: "none"} : {display:"initial"}}>Next</button> 
-            {/* </Route>
-            </Switch>    */}
-        </>
+        </div>
       ) 
     }
   }
