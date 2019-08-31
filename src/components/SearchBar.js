@@ -92,12 +92,12 @@ class SearchBar extends React.Component {
           })
     }
     blur() {
-        //list.innerHTML = "";
+        const list = document.querySelector("#list");
+        list.style.display = "none";
     }
-    // focus(){
-    //     document.querySelector("#list").classList.remove('inactive');
-    //     document.querySelector("#lit").classList.add('active');
-    // }
+    focus(){
+        document.querySelector("#list").style.display = "block";
+    }
     render() {
         const searchbeers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}><Link to={`/beers/${beer.id}`}>{beer.name}</Link></li>});
         console.log(searchbeers);
@@ -106,7 +106,7 @@ class SearchBar extends React.Component {
         });
         return (
             <div id="searchbar">  
-                <input id="search-box" placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} name="inputField" onBlur={this.blur}></input>
+                <input id="search-box" placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} name="inputField" onBlur={this.blur} onFocus={this.focus}></input>
                 <form>
                     {searchOptions}
                 </form>

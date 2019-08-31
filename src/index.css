@@ -155,6 +155,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 #beers-main #beers .beers-beer-card {
   text-align: center;
   max-width: 100%;
+  background-color: blue;
 }
 
 #beers-main #beers .beers-beer-card img {
@@ -166,6 +167,9 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 
 #beers-main #beers .beers-beer-card a {
   color: yellow;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-family: "Unica One", cursive;
   background-color: rgba(56, 15, 168, 0.6);
 }
 
@@ -184,7 +188,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   content: attr(data-line);
   margin: 0;
   font-size: 17px;
-  color: #02023d;
+  color: #991f93;
   padding: 10px;
   font-family: "Unica One", cursive;
 }
@@ -201,7 +205,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   -ms-grid-rows: 1fr 3fr;
       grid-template-rows: 1fr 3fr;
       grid-template-areas: "header header" "img main";
-  color: #aee3f0;
+  color: #060218;
 }
 
 .beer-card div#beer-card-header {
@@ -258,10 +262,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 }
 
 #explore-btn {
-  border: 1px solid gray;
   font-size: 30px;
-  padding: 5px;
-  max-width: 50%;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
@@ -269,11 +270,12 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   display: block;
   margin: 0 auto;
   margin-top: 300px;
-  background: #9386b8;
-  -webkit-box-shadow: 10px 10px 1px blue;
-          box-shadow: 10px 10px 1px blue;
+  background: transparent;
+  border: 2px solid white;
   color: white;
-  border: 1px solid blue;
+  max-width: 244px;
+  height: 244px;
+  border-radius: 50%;
 }
 
 /*=======Making text as background=======*/
@@ -287,8 +289,9 @@ h1#bg {
   font-size: 600px;
   text-align: center;
   line-height: 0.6;
-  color: #851212;
-  background-color: #721313;
+  color: #f1eef5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4fa), to(#beb2b2));
+  background-image: linear-gradient(#f4f4fa, #beb2b2);
   margin: 0;
   padding: 0;
   z-index: -100;
@@ -304,7 +307,7 @@ h1#other {
   font-size: 550px;
   text-align: center;
   line-height: 0.6;
-  color: rgba(57, 57, 119, 0.6);
+  color: rgba(65, 65, 243, 0.479);
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -334,8 +337,13 @@ h1#other {
 button {
   background-color: rgba(109, 214, 233, 0.952);
   color: #02023d;
-  border: 2px solid #02023d;
+  border: 2px solid rgbajaunesnysis(2, 2, 61, 1);
   border-radius: 3px;
   padding: 10px;
+}
+
+#list {
+  position: fixed;
+  top: 23px;
 }
 /*# sourceMappingURL=index.css.map */

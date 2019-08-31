@@ -9,14 +9,14 @@ class Beers extends React.Component {
         page: 1,
         beers: [],
         id: "random",
-        url: ["https://api.punkapi.com/v2/beers?per_page=15"]
+        url: ["https://api.punkapi.com/v2/beers?per_page=16"]
       }
       this.handleNextPage = this.handleNextPage.bind(this);
       this.handlePreviousPage = this.handlePreviousPage.bind(this);
       this.handleFilter = this.handleFilter.bind(this);
       this.updateUrl = this.updateUrl.bind(this);
     }
-//on mount first 15 beers are displayed
+//on mount first 16 beers are displayed
     componentDidMount() {
         fetch(`${this.state.url.join("&")}&page=${this.state.page}`)
           .then(response => response.json())

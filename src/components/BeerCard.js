@@ -22,8 +22,8 @@ class BeerCard extends React.Component {
     }
     
     componentDidUpdate(prevProps, prevState) {
-        // only update chart if the data has changed
-        console.log(prevProps.match.params.id !== this.props.match.params.id)
+        // only update if the data has changed
+        console.log(prevProps.match.params.id !== this.props.match.params.id);
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.setState({
                 id: this.props.match.params.id
