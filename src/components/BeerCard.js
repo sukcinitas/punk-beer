@@ -19,6 +19,7 @@ class BeerCard extends React.Component {
               beer: Array.from(res)
             })
           });
+        //if BeerCard is rendered from SearchBar, search list is not displayed
     }
     
     componentDidUpdate(prevProps, prevState) {

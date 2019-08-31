@@ -25,7 +25,7 @@ body {
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-template-rows: 1fr 5fr;
-    grid-template-areas: "head search" 
+    grid-template-areas: "head head" 
                          "main main";
 
     }
@@ -43,14 +43,16 @@ body {
     /*========SearchBar========
     =============================*/
     div#searchbar {
-        grid-area: search;
+        position: fixed;
+        top: 0;
+        right: 10px;
         text-align:center;
         justify-self: center;
-        width: 90%;
+        width: 30%;
         color: rgb(18,8,153);
-
-        
+        z-index: 100;
         input#search-box{
+
             margin: 0 auto;
             background-color: transparent;
             border: none;
@@ -73,6 +75,24 @@ body {
             display: inline;
             text-transform: lowercase;
             font-family: "PT Sans", sans-serif;
+        }
+        #list {
+            height: 90vh;
+            width: 80%;
+            list-style-type: none;
+            background-color: white;
+            color: blue;
+            display: none;
+            padding:10px;
+            margin: 0 auto;
+            overflow:scroll;
+            li {
+                padding:10px 40px;
+                border-bottom: 1px dashed blue;  
+                a {
+                  text-decoration: none;
+                }
+            }
         }
     }
     /*=======Navigation=======
@@ -296,12 +316,16 @@ h1#other {
 button {
     background-color: rgba(109, 214, 233, 0.952);
     color: rgba(2,2,61,1);
-    border: 2px solid rgbajaunesnysis(2,2,61,1);
+    border: 2px solid rgba(2,2,61,1);
     border-radius: 3px;
     padding: 10px;
 }
 
-#list {
-    position: fixed;
-    top: 23px;
+
+.active {
+    background-color: yellow;
+}
+form {
+    margin:0;
+    padding: 0;
 }

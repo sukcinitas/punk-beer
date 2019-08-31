@@ -1,8 +1,5 @@
 import React from 'react';
-import './SearchBar.css';
 import { Link } from 'react-router-dom';
-
-
 
 const data = [
     {
@@ -68,11 +65,10 @@ class SearchBar extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handler = this.handler.bind(this);
         this.blur = this.blur.bind(this);
-        // this.focus = this.focus.bind(this);
-    }
+        this.focus = this.focus.bind(this);
+      }
 
     handleChange (e) {
-        console.log(this.state.options)
         this.setState ({
           input: e.target.value
         })
@@ -92,21 +88,25 @@ class SearchBar extends React.Component {
           })
     }
     blur() {
-        const list = document.querySelector("#list");
-        list.style.display = "none";
+        console.log("out")
+        document.querySelector("#list").style.display = "none";
+
+       
     }
     focus(){
+        console.log("in")
         document.querySelector("#list").style.display = "block";
+
     }
     render() {
-        const searchbeers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}><Link to={`/beers/${beer.id}`}>{beer.name}</Link></li>});
-        console.log(searchbeers);
+        const searchbeers = this.state.searchbeers.map(beer => {return <li data-id={beer.id}><Link to={`/beers/${beer.id}`} >{beer.name}</Link></li>});
+        
         const searchOptions = data.map(item => {
             return <SearchOption key={item.id} option={item} chosen={this.state.options} handler={this.handler}/>
         });
         return (
-            <div id="searchbar">  
-                <input id="search-box" placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} name="inputField" onBlur={this.blur} onFocus={this.focus}></input>
+            <div id="searchbar" onMouseOver={this.focus} onMouseOut={this.blur}>  
+                <input id="search-box" placeholder={this.state.placeholder} onChange = {this.handleChange} value={this.state.input} name="inputField" autoComplete="off" ></input>
                 <form>
                     {searchOptions}
                 </form>

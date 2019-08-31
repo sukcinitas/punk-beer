@@ -32,12 +32,13 @@ body {
       grid-template-columns: 4fr 1fr;
   -ms-grid-rows: 1fr 5fr;
       grid-template-rows: 1fr 5fr;
-      grid-template-areas: "head search"  "main main";
+      grid-template-areas: "head head"  "main main";
 }
 
 h1#header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: head;
   color: #1b1a12;
   padding: 30px;
@@ -51,14 +52,15 @@ h1#header {
 /*========SearchBar========
     =============================*/
 div#searchbar {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: search;
+  position: fixed;
+  top: 0;
+  right: 10px;
   text-align: center;
   -ms-grid-column-align: center;
       justify-self: center;
-  width: 90%;
+  width: 30%;
   color: #120899;
+  z-index: 100;
 }
 
 div#searchbar input#search-box {
@@ -86,6 +88,27 @@ div#searchbar div.search-option {
   display: inline;
   text-transform: lowercase;
   font-family: "PT Sans", sans-serif;
+}
+
+div#searchbar #list {
+  height: 90vh;
+  width: 80%;
+  list-style-type: none;
+  background-color: white;
+  color: blue;
+  display: none;
+  padding: 10px;
+  margin: 0 auto;
+  overflow: scroll;
+}
+
+div#searchbar #list li {
+  padding: 10px 40px;
+  border-bottom: 1px dashed blue;
+}
+
+div#searchbar #list li a {
+  text-decoration: none;
 }
 
 /*=======Navigation=======
@@ -337,13 +360,17 @@ h1#other {
 button {
   background-color: rgba(109, 214, 233, 0.952);
   color: #02023d;
-  border: 2px solid rgbajaunesnysis(2, 2, 61, 1);
+  border: 2px solid #02023d;
   border-radius: 3px;
   padding: 10px;
 }
 
-#list {
-  position: fixed;
-  top: 23px;
+.active {
+  background-color: yellow;
+}
+
+form {
+  margin: 0;
+  padding: 0;
 }
 /*# sourceMappingURL=index.css.map */

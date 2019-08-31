@@ -44,12 +44,12 @@ const abv = {
 }
 //Three Filters: abv, ibu, ebc will go into FilterBar
 
-//Filter returns all buttons with certain options of that filter, onClick - url is updated to filtering options
+//Filter returns all buttons with certain options of that filter, onClick - url inside Beers component is updated to filtering options
 class Filter extends React.Component {
     render() {
         const allKeys = Object.keys(this.props.filter.values);
         const allBtns = allKeys.map(keyName => {
-            return <button key={keyName} onClick={this.props.click} data-url={this.props.filter.values[keyName]} className="btn">{keyName} {this.props.filter.units}</button>
+            return <button className="filter-btn" key={keyName} onClick={this.props.click} data-url={this.props.filter.values[keyName]} className="btn">{keyName} {this.props.filter.units}</button>
         })
         return (
             <div id={this.props.filter.units} style={{"display": `${this.props.styling}`}}> 
@@ -67,8 +67,6 @@ class FilterBar extends React.Component {
             filtersDisplay: "none",
             hover: false,
             hoveredFilter: "none",
-            //url: ["https://api.punkapi.com/v2/beers?"],
-            beers: []
         }
         this.displayFilters = this.displayFilters.bind(this);
         this.toggleHover = this.toggleHover.bind(this);
@@ -90,14 +88,6 @@ class FilterBar extends React.Component {
     
     
     render() {
-        const beers = this.state.beers.map(beer => {return (
-            <>
-                <h1>{beer.name}</h1>
-                <button data-id={beer.id}>Read more</button>
-            </>
-        )
-        });
-
         return (        
                 /* When "Filter" button is clicked, filtering groups are displayed. 
                 Upon hovering filtering group(abv, ebc, ibu), Filter component with all its options is displayed.
@@ -111,16 +101,15 @@ class FilterBar extends React.Component {
                     <button id="abv" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>ABV</button>
                     <button id="ibu" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>IBU</button>
                     <button id="ebc" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>EBC</button>
-                </div>
-
-                <Filter styling={this.state.hoveredFilter === "abv" ? "block" : "none"} filter={abv} click={this.props.updateurl}/>
-                <Filter styling={this.state.hoveredFilter === "ibu"? "block" : "none"} filter={ibu} click={this.props.updateurl}/>
-                <Filter styling={this.state.hoveredFilter === "ebc"? "block" : "none"} filter={ebc} click={this.props.updateurl}/>
-
-                <button onClick={this.props.filter}>Filter out</button>
                 
+
+                    <Filter styling={this.state.hoveredFilter === "abv" ? "block" : "none"} filter={abv} click={this.props.updateurl}/>
+                    <Filter styling={this.state.hoveredFilter === "ibu"? "block" : "none"} filter={ibu} click={this.props.updateurl}/>
+                    <Filter styling={this.state.hoveredFilter === "ebc"? "block" : "none"} filter={ebc} click={this.props.updateurl}/>
+
+                    <button onClick={this.props.filter}>Filter out</button>
+                </div>
                 {/* When filter out is clicked, beers meeting the filtering criteria are fetched and displayed */}
-                <div>{beers}</div>
             </>
     )}
 }
