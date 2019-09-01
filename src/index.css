@@ -16,9 +16,6 @@ body {
 #root {
   height: 100vh;
   overflow: auto;
-  background-position: 0px;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 /*========Shared across: header, searchbar, navigation=========
@@ -28,11 +25,11 @@ body {
   overflow: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 4fr 1fr;
-      grid-template-columns: 4fr 1fr;
+  -ms-grid-columns: 7fr 5fr;
+      grid-template-columns: 7fr 5fr;
   -ms-grid-rows: 1fr 5fr;
       grid-template-rows: 1fr 5fr;
-      grid-template-areas: "head head"  "main main";
+      grid-template-areas: "head search"  "main main";
 }
 
 h1#header {
@@ -52,13 +49,15 @@ h1#header {
 /*========SearchBar========
     =============================*/
 div#searchbar {
-  position: fixed;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: search;
   top: 0;
   right: 10px;
   text-align: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  width: 30%;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  width: 80%;
   color: #120899;
   z-index: 100;
 }
@@ -155,8 +154,9 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: main;
-  max-width: 80%;
   margin: 0 auto;
+  margin-top: 100px;
+  max-width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,27 +176,47 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 }
 
 #beers-main #beers .beers-beer-card {
+  padding: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "head head " "img subhead" "img btn";
   text-align: center;
   max-width: 100%;
-  background-color: blue;
 }
 
 #beers-main #beers .beers-beer-card img {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: img;
   border-radius: 10px;
   height: 400px;
-  margin: 0 auto;
-  padding: 30px;
+  padding: 0px;
+  padding-top: 20px;
+      justify-self: end;
 }
 
 #beers-main #beers .beers-beer-card a {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: btn;
   color: yellow;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 20px;
   font-family: "Unica One", cursive;
-  background-color: rgba(56, 15, 168, 0.6);
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
 }
 
-#beers-main #beers .beers-beer-card #text h1 {
+#beers-main #beers .beers-beer-card h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: head;
   color: rgba(109, 214, 233, 0.952);
   -webkit-filter: drop-shadow(1px 1px 7px blue);
           filter: drop-shadow(1px 1px 7px blue);
@@ -207,12 +227,18 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   width: 100%;
 }
 
-#beers-main #beers .beers-beer-card #text h1:after {
-  content: attr(data-line);
+#beers-main #beers .beers-beer-card h4 {
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: subhead;
   margin: 0;
   font-size: 17px;
   color: #991f93;
-  padding: 10px;
+  -webkit-filter: drop-shadow(1px 1px 7px blue);
+          filter: drop-shadow(1px 1px 7px blue);
+  padding: 0px;
   font-family: "Unica One", cursive;
 }
 
@@ -285,6 +311,7 @@ ul#navigation li a:hover, ul#navigation li a :focus {
 }
 
 #explore-btn {
+  padding: 20px;
   font-size: 30px;
   text-align: center;
   text-transform: uppercase;
@@ -292,18 +319,23 @@ ul#navigation li a:hover, ul#navigation li a :focus {
   font-family: "PT Sans", sans-serif;
   display: block;
   margin: 0 auto;
-  margin-top: 300px;
+  padding-top: 100px;
   background: transparent;
   border: 2px solid white;
-  color: white;
+  color: #190c96;
   max-width: 244px;
   height: 244px;
   border-radius: 50%;
+  background-color: white;
 }
 
 /*=======Making text as background=======*/
 h1#bg {
-  position: absolute;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -312,16 +344,19 @@ h1#bg {
   font-size: 600px;
   text-align: center;
   line-height: 0.6;
-  color: #f1eef5;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4fa), to(#beb2b2));
-  background-image: linear-gradient(#f4f4fa, #beb2b2);
+  color: transparent;
+  background-color: #2b2436;
   margin: 0;
   padding: 0;
   z-index: -100;
 }
 
 h1#other {
-  position: absolute;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -367,10 +402,5 @@ button {
 
 .active {
   background-color: yellow;
-}
-
-form {
-  margin: 0;
-  padding: 0;
 }
 /*# sourceMappingURL=index.css.map */

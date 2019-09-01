@@ -77,15 +77,13 @@ class Beers extends React.Component {
       const beers = this.state.beers.map((beer)=> {
         return (<div key={beer.id} className="beers-beer-card">
                   <img src={beer.image_url} alt={beer.name}/>
-                  <div id="text">
-                    <h1 data-line={beer.tagline}>{beer.name}</h1>
-                    {/* <h4>{beer.tagline}</h4> */}
-                  </div>
+                  <h1 data-line={beer.tagline}>{beer.name}</h1>
+                  <h4>{beer.tagline}</h4>
                   <NavLink to={`/beers/${beer.id}`}><p data-id={beer.id}>Read more</p></NavLink>
                 </div>)
       });
       return (
-        <div id="beers-main">          
+        <div id="beers-main" className="main">          
               <FilterBar filter={this.handleFilter} updateurl={this.updateUrl}/>
               {beers.length === 0 ? "Nothing to show" : <div id="beers">{beers}</div>}
               <div className="pages">

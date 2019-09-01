@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Reenie+Beanie|Rye&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -13,9 +14,6 @@ body {
 #root {
     height: 100vh;
     overflow: auto;
-    background-position: 0px;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 /*========Shared across: header, searchbar, navigation=========
 ================================================================*/
@@ -23,9 +21,9 @@ body {
     height: 100vh;
     overflow: auto;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 7fr 5fr;
     grid-template-rows: 1fr 5fr;
-    grid-template-areas: "head head" 
+    grid-template-areas: "head search" 
                          "main main";
 
     }
@@ -43,12 +41,12 @@ body {
     /*========SearchBar========
     =============================*/
     div#searchbar {
-        position: fixed;
+        grid-area: search;
         top: 0;
         right: 10px;
         text-align:center;
-        justify-self: center;
-        width: 30%;
+        justify-self: right;
+        width: 80%;
         color: rgb(18,8,153);
         z-index: 100;
         input#search-box{
@@ -132,9 +130,11 @@ body {
 
 
 #beers-main{
+    
     grid-area: main;
-    max-width: 80%;
     margin: 0 auto;
+    margin-top: 100px;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     #beers {
@@ -143,44 +143,55 @@ body {
         max-width: 100%;
         grid-gap: 80px;
         .beers-beer-card {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "head head "
+                                 "img subhead"
+                                 "img btn"; 
             text-align: center;
             max-width: 100%;
-            background-color: blue;
             img {
-                // background-color: rgba(56, 15, 168, 0.6);
-                // border: 3px solid blue;
+                
+                grid-area: img;
                 border-radius: 10px;
                 height: 400px;
-                margin: 0 auto;
-                padding: 30px;
+                padding: 0px;
+                padding-top: 20px;
+                justify-self: end;
+
             }
-            a {
+            a { 
+                grid-area: btn;
                 color: yellow;
                 text-transform: uppercase;
-                font-size: 13px;
+                font-size: 20px;
                 font-family: "Unica One", cursive;
-                background-color: rgba(56, 15, 168, 0.6);
+                justify-self: center;
+                align-self: end;
             }
-            #text {
-               h1 { 
-                    color: rgba(109, 214, 233, 0.952);
-                    filter: drop-shadow(1px 1px 7px blue); 
-                    text-transform: uppercase;
-                    font-size: 40px;
-                    font-family: "Unica One", cursive;
-                    margin: 0;
-                    width: 100%;
-                    &:after {
-                        content: attr(data-line);
-                        margin: 0;
-                        font-size: 17px;
-                        color: rgb(153, 31, 147);
-                        padding: 10px;
-                        font-family: "Unica One", cursive;
-                    }
-                } 
+            h1 { 
+                
+                grid-area: head;
+                color: rgba(109, 214, 233, 0.952);
+                filter: drop-shadow(1px 1px 7px blue); 
+                text-transform: uppercase;
+                font-size: 40px;
+                font-family: "Unica One", cursive;
+                margin: 0;
+                width: 100%;
             }
-            
+            h4 {
+                justify-self: start;
+                grid-area: subhead;
+                margin: 0;
+                font-size: 17px;
+                color: rgb(153, 31, 147);
+                filter: drop-shadow(1px 1px 7px blue); 
+                padding: 0px;
+                font-family: "Unica One", cursive;
+            }
+        
         }
     }
 }
@@ -199,7 +210,7 @@ body {
     div#beer-card-header {
         grid-area: header;
         text-align: center;
-        // border-bottom: 1px solid white; 
+        
 
         h2 {
             color: rgba(109, 214, 233, 0.952);
@@ -243,6 +254,7 @@ body {
 }
 
     #explore-btn {
+        padding: 20px;
         font-size: 30px;
         text-align: center;
         text-transform: uppercase;
@@ -250,18 +262,20 @@ body {
         font-family: "PT Sans", sans-serif;
         display: block;
         margin: 0 auto;
-        margin-top: 300px;
+        padding-top: 100px;
         background: transparent;
         border: 2px solid rgb(255, 255, 255);
-        color: white;
+        color: rgb(25, 12, 150);
         max-width: 244px;
         height: 244px;
         border-radius: 50%;
+        background-color: white;
     }
 
 /*=======Making text as background=======*/
 h1#bg {
-    position: absolute;
+    grid-area: header;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -270,14 +284,15 @@ h1#bg {
     font-size: 600px;
     text-align: center;
     line-height: 0.6;
-    color: rgb(241, 238, 245);
-    background-image: linear-gradient(rgb(244, 244, 250), rgb(190, 178, 178));
+    color: transparent;
+    background-color: rgb(43, 36, 54);
     margin: 0;
     padding: 0;
     z-index:-100;
 }
 h1#other {
-    position: absolute;
+    grid-area: header;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -324,8 +339,4 @@ button {
 
 .active {
     background-color: yellow;
-}
-form {
-    margin:0;
-    padding: 0;
 }
